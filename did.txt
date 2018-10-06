@@ -2,3 +2,17 @@ nvm use stable
 npm install express-generator -g
 express --view=hbs --css=sass --git app
 cd app && npm install
+git submodule add git@github.com:flatironinstitute/kbucket.git
+
+# term1 dev
+cd app && npm run dev
+
+# term2 dev
+mkdir temporary1 temporary2 temporary3
+cd temporary1 && kbucket-hub
+
+# term3 dev
+cd temporary2 && lari-hub
+
+# term4 dev
+cd temporary3 && lari-host
