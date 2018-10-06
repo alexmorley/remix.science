@@ -8,6 +8,10 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var kbucket = require('./kbucket.js').KBucketServer;
+var kb_app = new kbucket('./public/data').app();
+
+console.log(kb_app);
 var app = express();
 
 // view engine setup
@@ -28,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/kbucket', kb_app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

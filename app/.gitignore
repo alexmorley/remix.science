@@ -1,4 +1,4 @@
-*/*.kbucket/*
+public/data/.kbucket/
 
 # Logs
 logs
