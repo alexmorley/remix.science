@@ -1,0 +1,3 @@
+[submodule "kbucket"]
+	path = kbucket
+	url = git@github.com:flatironinstitute/kbucket.git

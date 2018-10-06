@@ -1,3 +1,5 @@
+*/*.kbucket/*
+
 # Logs
 logs
 *.log
