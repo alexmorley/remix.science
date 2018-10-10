@@ -7,8 +7,8 @@ if(DEBUG) {console.log(inputDiv);}
 
 var dataFiles = [{filename:'/data/X.csv'},{filename: '/data/Y.csv'}]
 
-GETData(dataFiles[0].filename, (a,b) => showData(a,b,true));
-GETData(dataFiles[1].filename, showData);
+//GETData(dataFiles[0].filename, (a,b) => showData(a,b,true));
+//GETData(dataFiles[1].filename, showData);
 
 function showData(data, data_id, clear=false) {
   if(data_id) {
