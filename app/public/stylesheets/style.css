@@ -11,6 +11,12 @@ h1, h2 {
 a {
   color: #00B7FF; }
 
+table {
+  border-collapse: collapse; }
+
+table, th, td {
+  border: 1px solid black; }
+
 #maintable {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
