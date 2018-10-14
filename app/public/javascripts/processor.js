@@ -23,14 +23,13 @@ function get_url(url) {
 }
 
 function make_json_api_call(data, type, endpoint) {
-  let callee = this;
   return new Promise(function (resolve,reject) {
     // [TODO] add checks for inputs here
     if (DEBUG) {
-      console.log(type + ' ', callee.url+'/'+callee.id+endpoint);
+      console.log(type + ' ', this.url+'/'+this.id+endpoint);
     }
     let request = new XMLHttpRequest();
-    request.open(type, callee.url+'/'+callee.id+endpoint, true);
+    request.open(type, this.url+'/'+this.id+endpoint, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
     // Setup our listener to process completed requests
@@ -46,7 +45,7 @@ function make_json_api_call(data, type, endpoint) {
       }
     }
     request.send(JSON.stringify(data));
-  });
+  }.bind(this));
 };
 
 function HubNode(url, id='') {
