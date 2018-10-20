@@ -122,6 +122,19 @@ let proc_node = ProcessingNode('http://localhost:4240', '0f32ef79a70e');
 let local_kbucket_node = new KBucketNode('http://localhost:3000/kbucket', '5a9b54076ae0')
 let hub_node = new HubNode('http://localhost:3240')
 
+let list_button = document.getElementById("listprocessors");
+list_button.onclick = function cb(){
+  let p = proc_node.make_json_api_call({}, 'GET','/api/list_processors')
+    .then(
+        function (data) {
+          console.log(data);
+        },
+        function (err) {
+          console.log("Error from Lari: "+err);
+        }
+        );
+}
+
 let spec_button = document.getElementById("findprocessor");
 spec_button.onclick = function cb(){
   let processor_name = document.getElementById("processor_name").value;
