@@ -1,0 +1,35 @@
+{"port":2001,"protocol":"http","node_type":"leaf","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:17:32.135Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:17:32.136Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:17:32.157Z"}
+{"port":2001,"protocol":"http","node_type":"leaf","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:18:19.314Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:19.315Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:18:19.338Z"}
+{"port":2001,"protocol":"http","node_type":"leaf","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:18:29.374Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:29.375Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:18:29.378Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:31.201Z"}
+{"message":"Connection to parent hub closed. Will retry in 4 seconds...","level":"info","timestamp":"2018-10-25T10:18:31.201Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:35.204Z"}
+{"url":"ws://localhost:4240/","err":"connect ECONNREFUSED 127.0.0.1:4240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:35.207Z"}
+{"message":"Failed to reconnect to parent hub. Will retry in 10 seconds...","level":"info","timestamp":"2018-10-25T10:18:35.207Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:4240","level":"error","timestamp":"2018-10-25T10:18:35.207Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:35.208Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:45.209Z"}
+{"url":"ws://localhost:4240/","err":"connect ECONNREFUSED 127.0.0.1:4240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:45.214Z"}
+{"message":"Failed to reconnect to parent hub. Will retry in 10 seconds...","level":"info","timestamp":"2018-10-25T10:18:45.215Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:4240","level":"error","timestamp":"2018-10-25T10:18:45.216Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:45.217Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:54.146Z"}
+{"message":"Connection to parent hub closed. Will retry in 4 seconds...","level":"info","timestamp":"2018-10-25T10:18:54.146Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:55.217Z"}
+{"url":"ws://localhost:4240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:18:55.228Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:18:58.147Z"}
+{"url":"ws://localhost:3240/","err":"connect ECONNREFUSED 127.0.0.1:3240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:58.151Z"}
+{"message":"Failed to reconnect to parent hub. Will retry in 10 seconds...","level":"info","timestamp":"2018-10-25T10:18:58.151Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:3240","level":"error","timestamp":"2018-10-25T10:18:58.151Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:58.151Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:19:08.152Z"}
+{"url":"ws://localhost:3240/","err":"connect ECONNREFUSED 127.0.0.1:3240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:19:08.155Z"}
+{"message":"Failed to reconnect to parent hub. Will retry in 10 seconds...","level":"info","timestamp":"2018-10-25T10:19:08.156Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:3240","level":"error","timestamp":"2018-10-25T10:19:08.156Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:19:08.157Z"}

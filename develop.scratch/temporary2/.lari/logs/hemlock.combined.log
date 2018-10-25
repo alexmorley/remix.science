@@ -1,0 +1,36 @@
+{"port":4240,"protocol":"http","node_type":"hub","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:16:11.143Z"}
+{"message":"Starting WebSocket server.","level":"info","timestamp":"2018-10-25T10:16:11.149Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:16:11.150Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:16:11.169Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:11.180Z"}
+{"message":"Connection to parent hub closed. Will retry in 4 seconds...","level":"info","timestamp":"2018-10-25T10:16:11.181Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:16:15.183Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:16:15.189Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:15.195Z"}
+{"message":"Connection to parent hub closed. Will retry in 4 seconds...","level":"info","timestamp":"2018-10-25T10:16:15.195Z"}
+{"opts":{"retry_timeout_sec":4,"retry2_timeout_sec":10},"level":"info","message":"Attempting to connect to parent hub","timestamp":"2018-10-25T10:16:19.197Z"}
+{"url":"ws://localhost:3240/","level":"info","message":"Connected to remote","timestamp":"2018-10-25T10:16:19.202Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:19.209Z"}
+{"message":"Connection to parent hub closed. Will retry in 4 seconds...","level":"info","timestamp":"2018-10-25T10:16:19.209Z"}
+{"port":4240,"protocol":"http","node_type":"hub","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:16:33.400Z"}
+{"message":"Starting WebSocket server.","level":"info","timestamp":"2018-10-25T10:16:33.404Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:17:06.203Z"}
+{"info":{"listen_url":"http://localhost:2000","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:17:06.210Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:17:06.210Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:17:51.230Z"}
+{"message":"Removing child leaf: 9e41fb432a38","level":"info","timestamp":"2018-10-25T10:17:51.231Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:18:09.040Z"}
+{"info":{"listen_url":"http://localhost:2000","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"something","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:18:09.046Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:18:09.046Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:24.299Z"}
+{"message":"Removing child leaf: 9e41fb432a38","level":"info","timestamp":"2018-10-25T10:18:24.299Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:18:28.298Z"}
+{"info":{"listen_url":"http://localhost:2000","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"something","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:18:28.306Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:18:28.306Z"}
+{"port":4240,"protocol":"http","node_type":"hub","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:18:50.487Z"}
+{"message":"Starting WebSocket server.","level":"info","timestamp":"2018-10-25T10:18:50.491Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:18:55.229Z"}
+{"info":{"listen_url":"http://localhost:2000","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"something","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:18:55.233Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:18:55.234Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:19:14.593Z"}
+{"message":"Removing child leaf: 9e41fb432a38","level":"info","timestamp":"2018-10-25T10:19:14.594Z"}

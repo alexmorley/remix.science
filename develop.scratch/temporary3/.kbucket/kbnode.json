@@ -1,0 +1,14 @@
+{
+    "node_type": "leaf",
+    "node_id": "9e41fb432a38",
+    "name": "temporary3",
+    "scientific_research": "yes",
+    "description": "something",
+    "owner": "a",
+    "owner_email": "alex0morley@gmail.com",
+    "confirm_share": "yes",
+    "network_type": "kbucket",
+    "listen_url": ".",
+    "parent_hub_url": "http://localhost:3240",
+    "parent_hub_passcode": ""
+}

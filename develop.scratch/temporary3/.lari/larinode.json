@@ -1,0 +1,15 @@
+{
+    "node_type": "leaf",
+    "node_id": "9e41fb432a38",
+    "network_type": "lari",
+    "name": "temporary3",
+    "scientific_research": "yes",
+    "description": "something",
+    "owner": "a",
+    "owner_email": "alex0morley@gmail.com",
+    "confirm_share": "yes",
+    "listen_url": ".",
+    "processing_passcode": "",
+    "parent_hub_url": "http://localhost:4240",
+    "parent_hub_passcode": ""
+}

@@ -1,0 +1,30 @@
+{"port":3240,"protocol":"http","node_type":"hub","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:15:05.529Z"}
+{"message":"Starting WebSocket server.","level":"info","timestamp":"2018-10-25T10:15:05.534Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:16:11.167Z"}
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:11.176Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:11.180Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:16:15.189Z"}
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:15.193Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:15.195Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:16:19.202Z"}
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:19.208Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:16:19.209Z"}
+{"message":"Closing connection after 60.004 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:11.179Z"}
+{"message":"Closing connection after 60.006 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:15.199Z"}
+{"message":"Closing connection after 60.004 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:19.212Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:17:32.156Z"}
+{"info":{"listen_url":"http://localhost:2001","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:17:32.160Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:17:32.160Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:17:51.229Z"}
+{"message":"Removing child leaf: 9e41fb432a38","level":"info","timestamp":"2018-10-25T10:17:51.229Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:18:19.337Z"}
+{"info":{"listen_url":"http://localhost:2001","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"something","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:18:19.340Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:18:19.340Z"}
+{"message":"Websocket closed.","level":"info","timestamp":"2018-10-25T10:18:24.299Z"}
+{"message":"Removing child leaf: 9e41fb432a38","level":"info","timestamp":"2018-10-25T10:18:24.299Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"New websocket connection.","timestamp":"2018-10-25T10:18:29.378Z"}
+{"info":{"listen_url":"http://localhost:2001","name":"temporary3","node_type":"leaf","kbnode_type":"share","scientific_research":"yes","description":"something","owner":"a","owner_email":"alex0morley@gmail.com","confirm_share":"yes"},"level":"info","message":"Child has registered","timestamp":"2018-10-25T10:18:29.380Z"}
+{"message":"Adding child (leaf): temporary3 (9e41fb432a38)","level":"info","timestamp":"2018-10-25T10:18:29.380Z"}
+{"message":"Closing connection after 63.983 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:18:52.169Z"}
+{"port":3240,"protocol":"http","node_type":"hub","level":"info","message":"Starting http server.","timestamp":"2018-10-25T10:19:11.604Z"}
+{"message":"Starting WebSocket server.","level":"info","timestamp":"2018-10-25T10:19:11.608Z"}

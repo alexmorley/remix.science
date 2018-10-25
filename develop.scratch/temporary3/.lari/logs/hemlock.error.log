@@ -1,0 +1,8 @@
+{"url":"ws://localhost:4240/","err":"connect ECONNREFUSED 127.0.0.1:4240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:35.207Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:4240","level":"error","timestamp":"2018-10-25T10:18:35.207Z"}
+{"url":"ws://localhost:4240/","err":"connect ECONNREFUSED 127.0.0.1:4240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:45.214Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:4240","level":"error","timestamp":"2018-10-25T10:18:45.216Z"}
+{"url":"ws://localhost:3240/","err":"connect ECONNREFUSED 127.0.0.1:3240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:18:58.151Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:3240","level":"error","timestamp":"2018-10-25T10:18:58.151Z"}
+{"url":"ws://localhost:3240/","err":"connect ECONNREFUSED 127.0.0.1:3240","level":"error","message":"Error connecting to remote","timestamp":"2018-10-25T10:19:08.155Z"}
+{"message":"Websocket error: connect ECONNREFUSED 127.0.0.1:3240","level":"error","timestamp":"2018-10-25T10:19:08.156Z"}

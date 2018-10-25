@@ -1,0 +1,7 @@
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:11.176Z"}
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:15.193Z"}
+{"message":"network types do not match: lari <> kbucket. Closing websocket.","level":"error","timestamp":"2018-10-25T10:16:19.208Z"}
+{"message":"Closing connection after 60.004 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:11.179Z"}
+{"message":"Closing connection after 60.006 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:15.199Z"}
+{"message":"Closing connection after 60.004 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:17:19.212Z"}
+{"message":"Closing connection after 63.983 seconds of not receiving a message.. Closing websocket.","level":"error","timestamp":"2018-10-25T10:18:52.169Z"}

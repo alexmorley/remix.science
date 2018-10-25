@@ -1,0 +1,15 @@
+{
+    "node_type": "hub",
+    "node_id": "776f825d6a12",
+    "network_type": "kbucket",
+    "name": "temporary1",
+    "scientific_research": "yes",
+    "description": "something",
+    "owner": "a",
+    "owner_email": "alex0morley@gmail.com",
+    "listen_port": 3240,
+    "passcode": "",
+    "listen_url": ".",
+    "parent_hub_url": ".",
+    "parent_hub_passcode": ""
+}

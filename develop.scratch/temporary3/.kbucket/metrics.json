@@ -1,0 +1,8 @@
+{
+    "parent_hub_connections": 1,
+    "messages_from_parent_hub": 6,
+    "bytes_in_from_parent_hub": 738,
+    "bytes_out_to_parent_hub": 5267,
+    "parent_hub_connections_closed": 1,
+    "parent_hub_connections_failed": 2
+}
