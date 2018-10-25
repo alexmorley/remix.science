@@ -1,5 +1,9 @@
 "use strict"
 
+let proc_node = ProcessingNode('http://localhost:4240', '9e41fb432a38');
+let local_kbucket_node = new KBucketNode('http://localhost:3000/kbucket','52260a0e4a6c')
+let hub_node = new HubNode('http://localhost:3240')
+
 function get_url(url) {
   return new Promise(function (resolve,reject) {
     let request = new XMLHttpRequest();
@@ -118,26 +122,31 @@ function update_spec_display(spec) {
   });
 }
 
-let proc_node = ProcessingNode('http://localhost:4240', '0f32ef79a70e');
-let local_kbucket_node = new KBucketNode('http://localhost:3000/kbucket', '5a9b54076ae0')
-let hub_node = new HubNode('http://localhost:3240')
-
 let list_button = document.getElementById("listprocessors");
-list_button.onclick = function cb(){
-  let p = proc_node.make_json_api_call({}, 'GET','/api/list_processors')
+list_button.onclick = list_processors;  
+
+let processor_list = document.getElementById("processorlist");
+function list_processors(){
+  let p = proc_node.make_json_api_call({opts:{}}, 'POST','/api/list_processors')
     .then(
         function (data) {
-          console.log(data);
-        },
+          data.info.forEach(function map(el,i,arr) {
+            let p = processor_list.appendChild(document.createElement('option'));
+            p.innerHTML = el;
+            p.value = el; 
+          })},
         function (err) {
           console.log("Error from Lari: "+err);
         }
-        );
+        )
 }
+processor_list.onchange = findprocessor;
 
 let spec_button = document.getElementById("findprocessor");
-spec_button.onclick = function cb(){
-  let processor_name = document.getElementById("processor_name").value;
+spec_button.onclick = findprocessor;
+
+function findprocessor(){
+  let processor_name = document.getElementById("processorlist").value;
   let data ={processor_name:processor_name, opts: {}};
   let p = proc_node.make_json_api_call(data, 'POST','/api/processor_spec')
     .then(
@@ -155,7 +164,7 @@ spec_button.onclick = function cb(){
 let run_button = document.getElementById("runprocessor");
 run_button.onclick = async function cb(){
   // Collect the data needed to send
-  let processor_name = document.getElementById("processor_name").value;
+  let processor_name = document.getElementById("processorlist").value;
   let input_els = document.getElementById("spec_input")
     .getElementsByTagName("input");
   let inputs = {};
