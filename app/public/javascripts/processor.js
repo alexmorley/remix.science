@@ -4,6 +4,17 @@ let proc_node = ProcessingNode('http://localhost:4240', '9e41fb432a38');
 let local_kbucket_node = new KBucketNode('http://localhost:3000/kbucket','52260a0e4a6c')
 let hub_node = new HubNode('http://localhost:3240')
 
+let LocalDataStorage = {
+  spec: undefined,
+  input_content_cache: {},
+  output_content_cache: {},
+  nodes: {
+    proc_node,
+    local_kbucket_node,
+    hub_node
+  }
+}
+
 function get_url(url) {
   return new Promise(function (resolve,reject) {
     let request = new XMLHttpRequest();
@@ -81,14 +92,23 @@ function KBucketNode(url,id) {
   }
 }
 
-function update_spec_display(spec) {
-  // map inputs to text boxes
-  let parent_div = document.getElementById("spec_input");
-  spec.inputs.forEach(function (el,i,arr) {
-    let p = parent_div.appendChild(document.createElement('p'));
-    p.innerHTML = 'Input File for ' + el.name + ':';
+function clear_collection(collection) {
+  while(collection.length > 0) {
+    collection[0].remove();
+  }
+}
 
-    let input = parent_div.appendChild(document.createElement('input'));
+function update_spec_display(spec) {
+  let spec_input_div = document.getElementById("spec_input");
+  clear_collection(spec_input_div.children);
+  let spec_output_div = document.getElementById("spec_output");
+  clear_collection(spec_output_div.children);
+  
+  // map inputs to text boxes
+  spec.inputs.forEach(function (el,i,arr) {
+    let p = spec_input_div.appendChild(document.createElement('p'));
+    p.innerHTML = 'Input File for ' + el.name + ':';
+    let input = spec_input_div.appendChild(document.createElement('input'));
     input.value = el.default_file_name;
     input.id = el.name;
     input.onchange = function() {
@@ -101,22 +121,20 @@ function update_spec_display(spec) {
             p = i.nextSibling;
           }
         p.innerHTML = a; 
+        LocalDataStorage.input_content_cache[input.id] = a;
       });
     };
     input.onchange();
-
-    let data = parent_div.appendChild(document.createElement('div'));
-
+    let data = spec_input_div.appendChild(document.createElement('div'));
   });
   // map opts to text boxes
   //
   // map outputs to text boxes
-  parent_div = document.getElementById("spec_output");
   spec.outputs.forEach(function (el,i,arr) {
-    let p = parent_div.appendChild(document.createElement('p'));
+    let p = spec_output_div.appendChild(document.createElement('p'));
     p.innerHTML = 'Output File for ' + el.name + ':';
 
-    let input = parent_div.appendChild(document.createElement('input'));
+    let input = spec_output_div.appendChild(document.createElement('input'));
     input.value = el.default_file_name;
     input.id = el.name;
   });
@@ -129,16 +147,17 @@ let processor_list = document.getElementById("processorlist");
 function list_processors(){
   let p = proc_node.make_json_api_call({opts:{}}, 'POST','/api/list_processors')
     .then(
-        function (data) {
-          data.info.forEach(function map(el,i,arr) {
-            let p = processor_list.appendChild(document.createElement('option'));
-            p.innerHTML = el;
-            p.value = el; 
-          })},
-        function (err) {
-          console.log("Error from Lari: "+err);
-        }
-        )
+      function (data) {
+        clear_collection(processor_list.children)
+        data.info.forEach(function map(el,i,arr) {
+          let p = processor_list.appendChild(document.createElement('option'));
+          p.innerHTML = el;
+          p.value = el; 
+        })},
+      function (err) {
+        console.log("Error from Lari: "+err);
+      }
+    )
 }
 processor_list.onchange = findprocessor;
 
@@ -153,12 +172,12 @@ function findprocessor(){
         function (data) {
           if (data.spec) {
             update_spec_display(data.spec);
+            LocalDataStorage.spec = data.spec;
           } else {
             console.log("Invalid Processor Spec");
             console.log(data);
           }
-        }
-        );
+        });
 };
 
 let run_button = document.getElementById("runprocessor");
@@ -180,22 +199,12 @@ run_button.onclick = async function cb(){
     outputs[o.id] = o.value;
   });
 
-  /*let resPromise = local_kbucket_node.get_prv_from_filename('X.csv');
-  let resPromise_obj = JSON.parse(await resPromise);
-  console.log(resPromise_obj);
-
-  resPromise.then(
-      function on_res() { console.log("Promise Resolved"); },
-      function on_rej() { console.log("Promise Rejected"); }
-      );*/
-
   let data ={
     processor_name:processor_name,
     inputs: inputs,
     outputs: outputs,
     opts:{}
   };
-
 
   // Set up and make the API request
   let request = proc_node.make_json_api_call(data, 'POST','/api/run_process/')
@@ -205,7 +214,6 @@ run_button.onclick = async function cb(){
         })
     .then(
         function res(d) {
-          console.log("v from run");
           // TODO expand to all results
           let sha1 = d.result.original_checksum;
           return hub_node.make_json_api_call({}, 'GET', 'find/'+sha1)
