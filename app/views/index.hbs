@@ -1,14 +1,16 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+<script src="javascripts/status.js"></script> 
 <div id="maintable">
     <div id="input">
-        <h2>Input</h2>
-        <div id="inputdata">
+      <h2>Input</h2>
+      <div id="spec_input">
+      <div id="inputdata">
             No data yet 
         </div>
-        <div id="spec_input"></div>
-        <script src="javascripts/input.js"></script> 
+      </div>
+      <script src="javascripts/input.js"></script> 
     </div>
     <div id="processor">
         <h2>Processor</h2>
@@ -16,6 +18,7 @@
         <button id="listprocessors"> Update </button>
         <button id="findprocessor"> Find Processor </button>
         <button id="runprocessor"> Run Processor </button>
+        <div id="spec_params"></div>
         <div id="spec_output"></div>
         <script src="javascripts/processor.js"></script>
     </div>
@@ -31,3 +34,9 @@
     </div>
 </div>
 
+<scroll-container id="status">
+  <h4> Status Bar </h4>
+  <p> Initialising </p>
+</div>
+
+<script src="javascripts/init.js"></script> 

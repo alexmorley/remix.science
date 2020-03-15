@@ -1,20 +1,4 @@
 "use strict"
-
-let proc_node = ProcessingNode('http://localhost:4240', '9e41fb432a38');
-let local_kbucket_node = new KBucketNode('http://localhost:3000/kbucket','52260a0e4a6c')
-let hub_node = new HubNode('http://localhost:3240')
-
-let LocalDataStorage = {
-  spec: undefined,
-  input_content_cache: {},
-  output_content_cache: {},
-  nodes: {
-    proc_node,
-    local_kbucket_node,
-    hub_node
-  }
-}
-
 function get_url(url) {
   return new Promise(function (resolve,reject) {
     let request = new XMLHttpRequest();
@@ -29,7 +13,7 @@ function get_url(url) {
         resolve(request.responseText);
       } else {
         // Runs when it's not
-        console.log("status: "+request.status);
+        info.log("status: "+request.status);
         reject(request.responseText);
       }
     }
@@ -40,9 +24,7 @@ function get_url(url) {
 function make_json_api_call(data, type, endpoint) {
   return new Promise(function (resolve,reject) {
     // [TODO] add checks for inputs here
-    if (DEBUG) {
-      console.log(type + ' ', this.url+'/'+this.id+endpoint);
-    }
+    info.log(type + ' ', this.url+'/'+this.id+endpoint, 3);
     let request = new XMLHttpRequest();
     request.open(type, this.url+'/'+this.id+endpoint, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
@@ -55,7 +37,7 @@ function make_json_api_call(data, type, endpoint) {
         resolve(JSON.parse(request.responseText));
       } else {
         // Runs when it's not
-        console.log("status: "+request.status);
+        info.log("status: "+request.status, 3);
         reject(request.responseText);
       }
     }
@@ -103,7 +85,7 @@ function update_spec_display(spec) {
   clear_collection(spec_input_div.children);
   let spec_output_div = document.getElementById("spec_output");
   clear_collection(spec_output_div.children);
-  
+ 
   // map inputs to text boxes
   spec.inputs.forEach(function (el,i,arr) {
     let p = spec_input_div.appendChild(document.createElement('p'));
@@ -128,7 +110,16 @@ function update_spec_display(spec) {
     let data = spec_input_div.appendChild(document.createElement('div'));
   });
   // map opts to text boxes
-  //
+  let spec_params_div = document.getElementById("spec_params");
+  spec.parameters.forEach(function (el,i,arr) {
+    let p = spec_params_div.appendChild(document.createElement('p'));
+    p.innerHTML = el.name + ':';
+    let input = spec_params_div.appendChild(document.createElement('input'));
+    input.value = el.default;
+    input.id = el.name;
+  });
+
+
   // map outputs to text boxes
   spec.outputs.forEach(function (el,i,arr) {
     let p = spec_output_div.appendChild(document.createElement('p'));
@@ -155,7 +146,7 @@ function list_processors(){
           p.value = el; 
         })},
       function (err) {
-        console.log("Error from Lari: "+err);
+        info.log("Error from Lari: "+err, 1);
       }
     )
 }
@@ -171,17 +162,24 @@ function findprocessor(){
     .then(
         function (data) {
           if (data.spec) {
+            info.log("Updating Processor Spec",2)
+            info.log(JSON.stringify(data.spec, null, "\n"), 2)
             update_spec_display(data.spec);
             LocalDataStorage.spec = data.spec;
           } else {
-            console.log("Invalid Processor Spec");
-            console.log(data);
+            info.log("Invalid Processor Spec",1);
+            info.log(data, 2);
           }
         });
 };
 
 let run_button = document.getElementById("runprocessor");
 run_button.onclick = async function cb(){
+  let run = {
+    startedAt: Date(Date.now()),
+    status: "Collecting Inputs"
+  }
+
   // Collect the data needed to send
   let processor_name = document.getElementById("processorlist").value;
   let input_els = document.getElementById("spec_input")
@@ -191,6 +189,7 @@ run_button.onclick = async function cb(){
     inputs[o.id] = await local_kbucket_node.get_prv_from_filename(o.value);
   });
   await Promise.all(input_arr);
+  info.log(JSON.stringify(inputs,null,"\n"),3)
   
   let output_els = document.getElementById("spec_output")
     .getElementsByTagName("input");
@@ -199,51 +198,79 @@ run_button.onclick = async function cb(){
     outputs[o.id] = o.value;
   });
 
+  let params_els = document.getElementById("spec_params")
+    .getElementsByTagName("input");
+  let params = {};
+  let params_arr = Array.from(params_els, function a(o) {
+    params[o.id] = o.value;
+  });
+
   let data ={
     processor_name:processor_name,
     inputs: inputs,
     outputs: outputs,
-    opts:{}
+    opts: params,
+    parameters: params
   };
 
   // Set up and make the API request
+  run.spec = data;
+  run.status = "Ready to send."
   let request = proc_node.make_json_api_call(data, 'POST','/api/run_process/')
     .then(
-        function (data) {
-          return probe_process(data)
-        })
+      function (data) {
+        run.status = "Running..."
+        return probe_process(data)
+      })
     .then(
-        function res(d) {
-          // TODO expand to all results
-          let sha1 = d.result.original_checksum;
-          return hub_node.make_json_api_call({}, 'GET', 'find/'+sha1)
-        },
-        function rej(v) {
-          console.log("Something went wrong with the process.");
-          throw v;
-        })
+      function res(d) {
+        // TODO expand to all results
+        run.status = "Waiting for results";
+        let sha1 = d.result.original_checksum;
+        return hub_node.make_json_api_call({}, 'GET', 'find/'+sha1)
+      },
+      function rej(v) {
+        info.log("Something went wrong with the process.", 1);
+        run.status = "failed";
+        throw v;
+      })
     .then(
-        function res(d) {
-          return get_url(d.urls[0])          
-        },
-        function rej(v) {
-          console.log("error getting file path");
-          throw v
-        }
-        )
-      .then(
-          function res(d) {
-            let result = d.split('\n')
-                .map(arr=>arr.split(','));
-						let result_table = createTable(result);
-						document.getElementById('output')
-              .appendChild(result_table);
-          },
-          function rej(v) {
-            console.log("error downloading file");
-            throw v
-          }
-          )
+      function res(d) {
+        run.status = "Pulling results from Kbucket"
+        return get_url(d.urls[0])          
+      },
+      function rej(v) {
+        info.log("error getting file path", 1);
+        run.status = "failed";
+        throw v
+      }
+    )
+    .then(
+      function res(d) {
+        run.status = "suceeded";
+        let result = d.split('\n')
+          .map(arr=>arr.split(','));
+        let result_table = createTable(result);
+        document.getElementById('output')
+          .appendChild(result_table);
+      },
+      function rej(v) {
+        info.log("error downloading file", 1);
+        run.status = "failed";
+        throw v
+      }
+    )
+    .catch(
+      function error(err) {
+        run.status = "failed";
+        info.log(err,1);
+      }
+    )
+    .finally(
+      function res() {
+        LocalDataStorage.runs.push(run)
+      }
+    )
 
   // Continue to probe the server for the status of the process
   function probe_process(response) { 
@@ -259,14 +286,15 @@ run_button.onclick = async function cb(){
                     let process = data;
                     if (process.is_complete) {
                       if (process.result.outputs) {
+                        info.log("Process Finished. Files available.", 3);
                         clearInterval(timer);
                         resolve(process.result.outputs);
                       } else {
-                        console.log(process);
-                        console.log("Waiting for files to be available");
+                        info.log(process,2);
+                        info.log("Waiting for files to be available",2);
                       }
                     } else {
-                      console.log("Waiting for process to finish");
+                      info.log("Waiting for process to finish",2);
                     }
                   });
         }
@@ -291,6 +319,5 @@ function createTable(data) {
 
     tableBody.appendChild(row);
   });
-
   return table.appendChild(tableBody);
 }

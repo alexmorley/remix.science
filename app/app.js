@@ -8,10 +8,9 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+// Set up Local Kbucket
 var kbucket = require('./kbucket.js').KBucketServer;
 var kb_app = new kbucket('./public/data').app();
-
-console.log(kb_app);
 var app = express();
 
 // view engine setup

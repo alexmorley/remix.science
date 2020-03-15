@@ -1,15 +1,29 @@
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 60%; }
 
-html, body {
-  height: 70%; }
+html {
+  height: 100%; }
 
 h1, h2 {
   text-align: center; }
 
 a {
   color: #00B7FF; }
+
+scroll-container p, scroll-container h4 {
+  line-height: 1.5;
+  padding: 0;
+  margin: 0; }
+
+scroll-container {
+  display: block;
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: gainsboro; }
 
 table {
   border-collapse: collapse; }

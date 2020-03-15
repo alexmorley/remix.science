@@ -1,14 +1,6 @@
 "use strict"
-const DEBUG = false;
-if(DEBUG) {console.log("Found me");}
 
 var inputDiv = document.getElementById('input');
-if(DEBUG) {console.log(inputDiv);}
-
-var dataFiles = [{filename:'/data/X.csv'},{filename: '/data/Y.csv'}]
-
-//GETData(dataFiles[0].filename, (a,b) => showData(a,b,true));
-//GETData(dataFiles[1].filename, showData);
 
 function showData(data, data_id, clear=false) {
   if(data_id) {
@@ -38,14 +30,12 @@ function GETData(url, cb) {
       var resp = this.response;
       cb(resp,url);
     } else {
-      // We reached our target server, but it returned an error
-
+      info.log("Server reached and return error in GET request", 1)
     }
   };
 
   request.onerror = function() {
-    // There was a connection error of some sort
-    if(DEBUG){console.log(this);}
+    info.log("Connection Error in GET request")
   };
 
   request.send(); 

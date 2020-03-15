@@ -25,7 +25,7 @@ tmux send-keys "cd ~/.scratch/temporary2 && lari-hub --auto" C-m
 
 ## lari host pane
 tmux select-pane -t 2
-tmux send-keys "cd ~/.scratch/temporary3 && lari-host --auto" C-m
+tmux send-keys "cd ~/.scratch/temporary3 && ML_CONFIG_FILE=$HOME/.mountainlab/mountainlab.env lari-host --auto" C-m
 tmux select-layout even-horizontal
 
 tmux select-window -t $SESSION:3
